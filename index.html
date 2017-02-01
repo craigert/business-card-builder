@@ -1,0 +1,490 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Ivanti - Business Cards</title>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Cormorant+Garamond:400i" rel="stylesheet">
+<link href="'http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic'" rel="'stylesheet'" type="'text/css'" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="scripts.js"></script>
+<script type="text/javascript" src="mask.js"></script>
+<script type="text/javascript" src="validate.js"></script>
+<link href="style.css" rel="stylesheet">
+<style type="text/css">
+body {
+	font-family: 'Arial', sans-serif;
+}
+body.has-sidebar #content {
+	width: calc(100% - 23% - 20px);
+}
+h2 {
+	display: inline-block;
+}
+h4 {
+	font-size: 15px !important;
+	margin: 0 !important;
+}
+label {
+	width: 130px;
+	display: block;
+	margin-top: 4px;
+	float: left;
+	font-size: 15px;
+}
+.col {
+	width: 433px;
+	float: left;
+}
+.col:nth-last-child(1) {
+	width: 390px;
+	padding-left: 23px;
+	border-left: 1px solid #e8e8e8
+}
+.frmSubmit {
+	margin-left: 10px;
+}
+.appsenseSignature {
+	display: none;
+}
+.error {
+	display: none;
+}
+.hidden-message {
+	font-size: 22px;
+	width: 13%;
+	text-align: center;
+	position: fixed;
+	margin-left: 60px;
+    margin-top: 200px;
+}
+.requiredText {
+	font-style: italic;
+	color: #fe5252;
+	font-weight: bold;
+	display: inline;
+}
+.greyText {
+	color: #999999;
+}
+.darkText {
+	color: #373737;
+}
+.disabled {
+	background-color: #79a9f8 !important;
+	cursor: default !important
+}
+#loading_image {
+	margin: 22px 0 0 10px;
+}
+input[type="text"] {
+	width: 280px;
+	color: #373737;
+	height: 29px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+input[type="text"]:focus {
+	border: 1px solid #999999;
+}
+input[type="text"].placeholder {
+	color: #999999;
+}
+select {
+	width: 280px;
+	height: 29px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+select:focus {
+	border: 1px solid #999999;
+}
+input[type="submit"] {
+	color: #fff;
+	background-color: #4285f4;
+	line-height: 20px;
+	min-width: 88px;
+	-webkit-user-select: none;
+	-webkit-transition: background .2s .1s;
+	cursor: pointer;
+	transition: background .2s .1s;
+	border: 0;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	display: inline-block;
+	font-size: 14px;
+	font-weight: 500;
+	min-width: 4em;
+	outline: none;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+	text-transform: uppercase;
+	-webkit-tap-highlight-color: transparent;
+	z-index: 0;
+	padding: 8px 13px;
+	margin: 15px 0 0 0;
+}
+select.phonetype1, select.phonetype2, select.phonetype3 {
+	width: 37px;
+	position: absolute;
+	margin-left: -40px;
+	color: #373737;
+}
+.required {
+	border: 2px solid #fe5252 !important;
+}
+.required::before {
+	content: "* ";
+	color: red;
+	font-size: 1.4em;
+	position: relative;
+	top: 6px;
+}
+#outputLogo {
+	width: 58%;
+	margin-bottom: 32p;
+}
+#inputCards {
+	color: #373737;
+}
+#outputCardAddress1 {
+	font-size: 9px;
+	line-height: 1.5em;
+}
+#outputCardEmail {
+	font-size: 11px;
+}
+#outputCardTwitter {
+	font-size: 11px;
+}
+#outputCardFullname, #outputCardFullnameLanguage, #outputCardCertification, #outputCardCertificationLanguage, #outputCardTitle, ##outputCardTitleLanguage {
+	line-height: 19px;
+}
+.phoneNumber {
+	font-size: 0.87em;
+}
+.cardFrontSide {
+	margin: 10px 0px 0px 0px;
+}
+.generalBusinessCard1 {
+	padding: 15px;
+	border: 1px solid #cccccc;
+	margin-bottom: 38px;
+	min-height: 200px;
+}
+/* .generalBusinessCard2 { background: #236298; border: 1px solid #999999; padding: 75px 88px 75px 88px; }*/
+.preview {
+	postion: relative;
+}
+.fix-preview {
+	position: fixed;
+	top: 0px;
+	margin-left: 433px;
+	margin-top: 10px;
+}
+.verifyInfo {
+	display: none;
+	position: relative;
+}
+.verifyInfo img {
+	position: absolute;
+	top: -38px;
+	width: 97px;
+	right: 14px;
+}
+</style>
+</head>
+
+<body>
+<div class="fusion-page-title-bar fusion-page-title-bar-none fusion-page-title-bar-left">
+  <div class="fusion-page-title-row">
+    <div class="fusion-page-title-wrapper">
+      <div class="fusion-page-title-captions">
+        <img src="http://rs.landesk.com/images/logos/ivi-logo-fullcolor.png" style="width: 150px; float: left; margin-right: 20px; "/>
+		  <div style="clear: both:"></div>
+        <h1 class="entry-title" data-fontsize="24" data-lineheight="33" style="margin-top: 30px;">Business Card Order Form</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="main" class="clearfix " style="">
+  <div class="fusion-row" style="">
+    <div id="content" style="float: left;">
+      <div class="businessCardSection">
+        <div class="cardContent">
+          <div class="col">
+            <div>
+              <h2 data-fontsize="24" data-lineheight="36">Enter Your Information</h2>
+              <div class="requiredText"> ( required in red )</div>
+            </div>
+            <div style="margin-bottom: 30px;" class="noCardToggle">
+              <input type="checkbox" id="inputNoCard" style="width: 40px; height: 20px;">
+              Click here if you don’t need/want a business card</div>
+            <form action="https://docs.google.com/forms/d/e/1FAIpQLSe_vdv_kPMdSygie9d-p31e-YgAocAnPZ_wYJRGycfZeRAT2w/formResponse" method="POST" id="businessCardForm" target="hidden_iframe" onsubmit="submitted=true;" class="businessCardForm">
+              <div style="width: 360px; font-weight: bold;">Enter your information in your preferred language
+                <p></p>
+              </div>
+              <p>
+                <label>Department:</label>
+                <select id="inputDepartment" type="text" keyev="true" class="department required requiredField" onchange="this.className=this.options[this.selectedIndex].className">
+                  <option value="" selected="" class="grayText">Choose…</option>
+                  <option value="Engineering" class="darkText">Engineering</option>
+                  <option value="Executive Staff" class="darkText">Executive Staff</option>
+                  <option value="HR / Finance / Legal" class="darkText">HR / Finance / Legal</option>
+                  <option value="IT / Business Apps" class="darkText">IT / Business Apps</option>
+                  <option value="Marketing" class="darkText">Marketing</option>
+                  <option value="Global Sales" class="darkText">Global Sales</option>
+                  <option value="Sales - Americas" class="darkText">Sales – Americas</option>
+                  <option value="Sales - APAC" class="darkText">Sales – APAC</option>
+                  <option value="Sales - EMEA" class="darkText">Sales – EMEA</option>
+                  <option value="Customer Success" class="darkText">Customer Success</option>
+                </select>
+                <input type="hidden" name="entry.1871061308" class="departmentValue" value="">
+              </p>
+              <p>
+                <label>Full Name:</label>
+                <input name="entry.1846623445" id="inputCardFullname" type="text" keyev="true" placeholder="First Last" class="fullName required requiredField placeholder">
+              </p>
+              <p>
+                <label>Certification:</label>
+                <input name="entry.131130737" id="inputCardCertification" type="text" placeholder="Certification" class="certification placeholder">
+              </p>
+              <p>
+                <label>Title:</label>
+                <input name="entry.1057919032" id="inputCardTitle" type="text" placeholder="Job Title" class="jobTitle required requiredField placeholder">
+              </p>
+              <p>
+                <label>2nd Title:</label>
+                <input name="entry.239088875" id="inputCardTitle2" type="text" placeholder="2nd Title" class="jobTitle placeholder">
+              </p>
+              <p>
+                <label>Address 1:</label>
+                <select id="inputCardAddress1" type="text" keyev="true" class="address required requiredField" onchange="this.className=this.options[this.selectedIndex].className">
+                  <option value="" selected="" class="grayText">Choose…</option>
+                  <option value="None" class="darkText">No Address</option>
+                  <option value="Custom" class="darkText">Custom</option>
+                  <option value="698 West 10000 South Suite 500, South Jordan, Utah 84095" class="darkText">South Jordan, UT</option>
+                  <option value="8415 Explorer Drive, Suite 150 Colorado Springs, CO 80920" class="darkText">Colorado Springs, CO</option>
+                  <option value="8660 East Hartford Drive Suite 300 Scottsdale, AZ 85255" class="darkText">Scottsdale, AZ</option>
+                  <option value="Level 8, Suite 803 1 Elizabeth Plaza North Sydney New South Wales Australia 2060" class="darkText">Sydney, Australia</option>
+                  <option value="120 Robinson Road, Level 9 Singapore 068913" class="darkText">Singapore</option>
+                  <option value="Level 19 Tower E2 Oriental Plaza 1 East Chang An Avenue Dong Cheng District Beijing 100738, China" class="darkText">Beijing, China</option>
+                  <option value="Bagmane Tech Park Unit No.4A, Level 3 Laurel Building, Block B C V Raman Nagar Banagalore 560 093" class="darkText">Banagalore</option>
+                  <option value="3rd Floor, Capitol Building Oldbury Bracknell Berkshire RG12 8FZ" class="darkText">Bracknell, UK</option>
+                  <option value="HEAT Software (Lumension Security Ireland Ltd.) City Point, Second Floor Prospect Hill Galway Ireland" class="darkText">Ireland</option>
+                  <option value="Carl-von-Linde-Straße 38 85716 Unterschleißheim Germany" class="darkText">Unterschleißheim, Germany</option>
+                  <option value="Amtsgericht München HRB 130 111 USt-ID DE206 863 402 Gottlieb-Manz-Str. 10 70794 Filderstadt Germany" class="darkText">Filderstadt, Germany</option>
+                  <option value="HEAT Software (Schweiz) AG c/o RevConsult Treuhand AG Baarerstrasse 75 Postfach 1535 6300 Zug" class="darkText">Switzerland</option>
+                  <option value="Lichtenauerlaan 102-120 3062 ME Rotterdam Postbus 4365 3006 AJ Rotterdam" class="darkText">Rotterdam</option>
+                  <option value="Via San Francesco d’Assisi, 22 10121 Torino Italy" class="darkText">Torino, Italy</option>
+                  <option value="65 Rue des 3 Fontanot 92000 Nanterre France" class="darkText">Nanterre, France</option>
+                </select>
+                <input type="hidden" name="entry.650351415" class="addressValue" value="">
+                <!--<label>Address 1:</label><input name="entry.650351415" id="inputCardAddress1" type="text" placeholder="Address 1" class="address" />
+
+<label>Address 2:</label><input name="entry.1052552360" id="inputCardAddress2" type="text" placeholder="Address 2" class="address" />
+
+<label>Address 3:</label><input name="entry.591858070" id="inputCardAddress3" type="text" placeholder="Address 3" class="address" />--></p>
+              <p class="customAddress" style="display:none;">
+                <label>Custom Address:</label>
+                <input name="entry.315795308" id="inputCustomAddress" type="text" placeholder="" class="placeholder">
+              </p>
+              <p>Your email address format should be: first.last@newco.com (We will swap the domain when we layout the cards)</p>
+              <p>
+                <label>Email:</label>
+                <input name="entry.833115854" id="inputCardEmail" type="text" placeholder="first.last@newco.com" class="required requiredField placeholder">
+              </p>
+              <p>If you select the address first, it will format the phone number correctly.</p>
+              <p>
+                <label>Phone 1:</label>
+                <select id="inputPhoneType1" type="text" class="phonetype1">
+                  <option value="O" class="darkText">O</option>
+                  <option value="M" class="darkText">M</option>
+                  <option value="F" class="darkText">F</option>
+                </select>
+                <input type="hidden" name="entry.580064387" class="phone1TypeValue" value="">
+                <input name="entry.1528223907" id="inputCardPhone1" type="text" placeholder="" class="required requiredField placeholder">
+              </p>
+              <p>
+                <label>Phone 2:</label>
+                <select id="inputPhoneType2" type="text" class="phonetype2">
+                  <option value="O" class="darkText">O</option>
+                  <option value="M" class="darkText">M</option>
+                  <option value="F" class="darkText">F</option>
+                </select>
+                <input type="hidden" name="entry.1457047480" class="phone2TypeValue" value="">
+                <input name="entry.224713559" id="inputCardPhone2" type="text" placeholder="" class="placeholder">
+              </p>
+              <p>
+                <label>Phone 3:</label>
+                <select id="inputPhoneType3" type="text" class="phonetype3">
+                  <option value="O" class="darkText">O</option>
+                  <option value="M" class="darkText">M</option>
+                  <option value="F" class="darkText">F</option>
+                </select>
+                <input type="hidden" name="entry.793237659" class="phone3TypeValue" value="">
+                <input name="entry.420146194" id="inputCardPhone3" type="text" placeholder="" class="placeholder">
+              </p>
+              <p>
+                <label>Twitter:</label>
+                <input name="entry.1367791422" id="inputCardTwitter" type="text" placeholder="twitter handle" class="placeholder">
+              </p>
+              <!--<div style="width: 310px">Check the box if you want a 2nd language</div>
+              <p>
+                <input type="checkbox" id="inputCardDoubleSided" style="width: 40px; height: 20px;">
+                2nd Language
+                <input type="hidden" name="entry.129450632" class="doubleSidedValue" value="false">
+              </p>
+              <div id="languageInputs" style="display: none;">
+                <hr style="border-top: #cccccc dashed 1px;">
+                <h2 data-fontsize="24" data-lineheight="36">Second Language Information</h2>
+                <p>
+                  <label>Full Name:</label>
+                  <input name="entry.479826506" id="inputCardFullnameLanguage" type="text" keyev="true" placeholder="First Last" class="fullName placeholder">
+                </p>
+                <p>
+                  <label>Certification:</label>
+                  <input name="entry.1980392534" id="inputCardCertificationLanguage" type="text" placeholder="Certification" class="certification placeholder">
+                </p>
+                <p>
+                  <label>Title:</label>
+                  <input name="entry.2004995944" id="inputCardTitleLanguage" type="text" placeholder="Job Title" class="jobTitle placeholder">
+                </p>
+              </div>-->
+              <hr style="border-top: #cccccc dashed 1px; margin-bottom: 20px;">
+              <label>Number of Cards:</label>
+              <select id="inputCards" type="text" class="cards" onchange="this.className=this.options[this.selectedIndex].className">
+                <option value="250" selected="" class="darkText">250</option>
+                <option value="500" class="darkText">500</option>
+                <option value="750" class="darkText">750</option>
+                <option value="1000" class="darkText">1000</option>
+              </select>
+              <input type="hidden" name="entry.1179737760" class="cardsValue" val="" value="250">
+              <p></p>
+              <p>
+                <label>Shirt Size (mens):</label>
+                <select id="inputShirt" type="text" class="shirt required requiredField" onchange="this.className=this.options[this.selectedIndex].className">
+                  <option value="" selected="" class="grayText">Choose…</option>
+                  <option value="Extra Small" class="darkText">XS – Extra Small</option>
+                  <option value="Small" class="darkText">S – Small</option>
+                  <option value="Medium" class="darkText">M – Medium</option>
+                  <option value="Large" class="darkText">L – Large</option>
+                  <option value="Extra Large" class="darkText">XL – ExtraLarge</option>
+                  <option value="Double Extra Large" class="darkText">2XL – Double Extra Large</option>
+                  <option value="Triple Extra Large" class="darkText">3XL – Triple Extra Large</option>
+                </select>
+                <input type="hidden" name="entry.1407516732" class="shirtValue" val="">
+              </p>
+              <p>
+                <input type="hidden" name="entry.593939744" class="shirtValue" val="">
+              </p>
+              <p>
+                <input id="ss-submit" type="submit" value="Submit" class="frmSubmit submit-button disabled" disabled="">
+                <img src="ajax-loader.gif" style="display: none;" id="loading_image"></p>
+            </form>
+          </div>
+          <div class="col preview">
+            <h2 data-fontsize="24" data-lineheight="36">Your Business Card</h2>
+            <h4 data-fontsize="15" data-lineheight="22">Information Verification:</h4>
+            <div class="cardFrontSide">
+              <div width="328" class="generalBusinessCard1">
+                <div id="outputCardFullname" style="font-weight: bold;"></div>
+                <div id="outputCardFullNameLanguage" style="font-weight: bold;"></div>
+                <div id="outputCardCertification"></div>
+                <div id="outputCardCertificationLanguage"></div>
+                <div id="outputCardTitle"></div>
+                <div id="outputCardTitle2"></div>
+                <div id="outputCardTitleLanguage"></div>
+                <div id="outputCardEmail"></div>
+                <div id="outputCardTwitter"></div>
+                <p> </p>
+                <div id="outputCardPhone1" class="phoneNumber"></div>
+                <div id="outputCardPhone2" class="phoneNumber"></div>
+                <div id="outputCardPhone3" class="phoneNumber"></div>
+                <div id="outputCardAddress1"></div>
+              </div>
+            </div>
+            <p></p>
+            <h4 data-fontsize="15" data-lineheight="22">Instructions:</h4>
+            <ol>
+              <li>Complete the form.</li>
+              <li>Verify that your info is correct.</li>
+              <li>Double-check each item.</li>
+              <li>Check box below to confirm.</li>
+              <div class="verifyInfo">
+                <input type="checkbox" id="inputVerifyInfo" style="width: 27px; height: 30px; margin-left: 0;">
+                I’ve verified the information<img src="red-arrow.png" style="postion: absolute"></div>
+              <li>Click Submit.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="noBusinessCardSection">
+        <div class="noCardContent">
+          <div class="col" style="border: none;">
+            <form action="https://docs.google.com/forms/d/e/1FAIpQLSdl_QcI8LTZ0y0zOsnFkTM0VmtyXx3aI0XVmqYnB-oDBW7myg/formResponse" method="POST" id="noBusinessCardForm" target="hidden_iframe1" onsubmit="submitted1=true;" class="noBusinessCardForm" style="display: none;">
+              <div style="width: 360px; font-weight: bold;">Fill out the following information:
+                <p></p>
+              </div>
+              <p>
+                <label>Department:</label>
+                <select id="inputNoDepartment" type="text" keyev="true" class="nodepartment" onchange="this.className=this.options[this.selectedIndex].className">
+                  <option value="" selected="" class="grayText">Choose…</option>
+                  <option value="Engineering" class="darkText">Engineering</option>
+                  <option value="Executive Staff" class="darkText">Executive Staff</option>
+                  <option value="HR / Finance / Legal" class="darkText">HR / Finance / Legal</option>
+                  <option value="IT / Business Apps" class="darkText">IT / Business Apps</option>
+                  <option value="Marketing" class="darkText">Marketing</option>
+                  <option value="Sales - Americas" class="darkText">Sales – Americas</option>
+                  <option value="Sales - APAC" class="darkText">Sales – APAC</option>
+                  <option value="Sales - EMEA" class="darkText">Sales – EMEA</option>
+                  <option value="Customer Success" class="darkText">Customer Success</option>
+                </select>
+                <input type="hidden" name="entry.441323760" class="noDepartmentValue" value="">
+              </p>
+              <p>
+                <label>Full Name:</label>
+                <input name="entry.791644539" id="inputNoCardFullname" type="text" keyev="true" placeholder="First Last" class="noFullName placeholder">
+              </p>
+              <p>
+                <label>Shirt Size:</label>
+                <select id="inputNoShirt" type="text" class="noshirt" onchange="this.className=this.options[this.selectedIndex].className">
+                  <option value="" selected="" class="grayText">Choose…</option>
+                  <option value="Extra Small" class="darkText">XS – Extra Small</option>
+                  <option value="Small" class="darkText">S – Small</option>
+                  <option value="Medium" class="darkText">M – Medium</option>
+                  <option value="Large" class="darkText">L – Large</option>
+                  <option value="Extra Large" class="darkText">XL – ExtraLarge</option>
+                  <option value="Double Extra Large" class="darkText">2XL – Double Extra Large</option>
+                  <option value="Triple Extra Large" class="darkText">3XL – Triple Extra Large</option>
+                </select>
+                <input type="hidden" name="entry.2141705681" jsname="L9xHkb" class="noShirtValue" value="Small">
+              </p>
+              <p>
+                <input id="no-ss-submit" type="submit" value="Submit" class="frmNoSubmit submit-button">
+                <img src="ajax-loader.gif" style="display: none;" id="loading_image1"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div style="position: relative">
+        <div class="hidden-message" style="display: none;"> Thanks! Your information has been received! </div>
+      </div>
+      <p><script type="text/javascript">var submitted=false;</script><br>
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {}"></iframe>
+      </p>
+      <div style="position: relative">
+        <div class="hidden-message1" style="display: none;"> Thanks! Your information has been received! </div>
+      </div>
+      <p><script type="text/javascript">var submitted1=false;</script><br>
+        <iframe name="hidden_iframe1" id="hidden_iframe1" style="display:none;" onload="if(submitted1) {}"></iframe>
+      </p>
+    </div>
+  </div>
+</div>
+<!-- fusion-row -->
+</div>
+</body>
+</html>
